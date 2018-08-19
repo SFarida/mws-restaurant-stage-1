@@ -4,6 +4,26 @@ let restaurants,
 var newMap
 var markers = []
 
+let imported = document.createElement('idb');
+imported.src = '/js/idb';
+document.head.appendChild(imported);
+
+/**
+ * Registering the service worker.
+ */
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -78,7 +98,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-    mapboxToken: '<your MAPBOX API KEY HERE>',
+    mapboxToken: 'pk.eyJ1Ijoic2ZhcmlkYSIsImEiOiJjamtwN2Z6OTIxMWpvM290ZHh4bWh1dnFiIn0.XA40qHEl6jZTgU58f2fzDA',
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -158,14 +178,22 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
+  const figure = document.createElement('figure');
+  figure.className = 'restaurant-figure';
+  li.append(figure);
+  
+
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
+  figure.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('figcaption');
   name.innerHTML = restaurant.name;
+  name.className = 'restaurant-name';
   li.append(name);
+  figure.append(name);
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
