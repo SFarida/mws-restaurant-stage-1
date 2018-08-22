@@ -29,14 +29,32 @@ ul, li {
 	font-size: 10pt;
   color: #333;
 }
+
 a {
 	color: orange;
 	text-decoration: none;
 }
-a:hover, a:focus {
-	color: #3397db;
+a:hover, 
+a:focus,
+span[role="link"]:hover,
+span[role="link"]:focus {
+  background: orange;
+	color: #ffffff;
+  text-decoration: underline;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14),
+              0 3px 1px -2px rgba(0, 0, 0, .2),
+              0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+span[role="link"]{
+  color: #fff;
 	text-decoration: none;
 }
+
+footer span[role="link"]{
+  color: orange;
+}
+
 a img{
 	border: none 0px #fff;
 }
@@ -79,7 +97,8 @@ nav h1 {
   margin: auto;
   padding: 25px 50px 25px 50px;
 }
-nav h1 a {
+/*nav h1 a {*/
+nav h1 span {
   color: #fff;
   font-size: 14pt;
   font-weight: 200;
@@ -130,7 +149,7 @@ nav h1 a {
   background-color: #3397DB;
   align-items: center;
   justify-content: center;
-  margin-top: 8px;
+  margin-top: 0;
   display: flex;
   flex-wrap: wrap;
 }
@@ -343,22 +362,34 @@ section#restaurants-list{
     margin: 5px 5px;
   }
 }
-  @media screen and (min-width: 645px) and (max-width: 799px){
-    #restaurants-list li{
-      width: calc(30% - 50px); 
-      margin: 5px 5px;
-    }
+@media screen and (min-width: 645px) and (max-width: 799px){
+  #restaurants-list li{
+    width: calc(30% - 50px); 
+    margin: 5px 5px;
   }
+}
 
-  @media screen and (min-width: 401px) and (max-width: 644px){
-    #restaurants-list li{
-      width: calc(35% - 50px); 
-      margin: 25px 25px;
-    }
+@media screen and (min-width: 401px) and (max-width: 644px){
+  #restaurants-list li{
+    width: calc(35% - 50px); 
+    margin: 25px 25px;
   }
+}
 
-    @media screen and (max-width: 500px){
-      #restaurants-list li{
-        width: 100%;
-      }
-    }
+@media screen and (max-width: 500px){
+  #restaurants-list li{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:588px) and (min-width: 400px){
+  .filter-options {
+    max-width: 100%;
+    background-color: #3397DB;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+}

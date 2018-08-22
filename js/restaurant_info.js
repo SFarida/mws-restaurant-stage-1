@@ -1,5 +1,13 @@
 let restaurant;
 var newMap;
+/**
+ * Adding tabindex
+ */
+function myFunction() {
+  document.getElementById("anchor1").tabIndex = "0";
+  document.getElementById("anchor2").tabIndex = "0";
+}
+
 
 /**
  * Initialize map as soon as the page is loaded.

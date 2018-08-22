@@ -186,6 +186,7 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = restaurant.name;
   li.append(image);
   figure.append(image);
 
@@ -206,9 +207,29 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
+  more.className = 'tab';
   li.append(more)
+  
 
   return li
+}
+
+/**
+ * Tabindex
+ */
+function myFunction() {
+  document.getElementsByClassName("tab").tabIndex = "0";
+}
+
+//link
+sap = {ui:{keycodes:{SPACE:32, ENTER:13 }}};
+//handles clicks and keydowns on the link
+function navigateLink(evt) {
+    if (evt.type=="click" ||
+        evt.keyCode == sap.ui.keycodes.ENTER) {
+        var ref = evt.target != null ? evt.target : evt.srcElement;
+        if (ref) window.open(ref.getAttribute("href"),"_blank");
+    }
 }
 
 /**

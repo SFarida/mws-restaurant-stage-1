@@ -15,7 +15,12 @@
 <body>
   <header>
     <nav>
-      <h1><a href="/">Restaurant Reviews</a></h1>
+      <!--<h1><a href="/">Restaurant Reviews</a></h1>-->
+      <h1>
+        <span href="/" onkeydown="navigateLink(event)" onclick="navigateLink(event)" tabindex="0" id="link1" check role="link" class="link">
+          Restaurant Reviews
+        </span>
+      </h1>
     </nav>
   </header>
 
@@ -34,7 +39,8 @@
         </select>
       </div>
       <ul id="restaurants-list">
-        <li id="items"></li>
+        <li id="items">
+        </li>
       </ul>
     </section>
   </main>
@@ -47,7 +53,10 @@
 
 
   <footer id="footer">
-    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+    Copyright (c) 2017 Copyright (c) 2017 <!--<a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.-->
+    <span href="/" onkeydown="navigateLink(event)" onclick="navigateLink(event)" tabindex="0" id="link2" check role="link" class="link">
+      Restaurant Reviews
+    </span> All Rights Reserved.
   </footer>
 
 </body>
