@@ -1,0 +1,9 @@
+{
+  "name": "Restaurant Reviews",
+  "description": "This is an app that gives restaurant revies and location",
+  "version": "0.0.0.1",
+  "manifest_version": 2,
+  "icons": {
+    "128": "icon_1.png"
+  }
+}
