@@ -2,7 +2,6 @@
  * Common database helper functions.
  */
 class DBHelper {
-
   /**
    * Database URL.
    * Change this to restaurants.json file location on your server.
@@ -31,10 +30,22 @@ class DBHelper {
         *Storing data in Indexdb
         */
           let dbPromise =  idb.open('restau-db', 1, function(upgradeDb){
-            let store = upgradeDb.createObjectStore('restau', {
-              keyPath: 'id'
-            });
-            store.createIndex('id', 'id');
+
+            switch (upgradeDb.oldVersion) {
+              case 0:
+                let store = upgradeDb.createObjectStore('restau', {
+                  keyPath: 'id'
+                });
+                store.createIndex('id', 'id');
+              case 1:
+                let reviewsStore = upgradeDb.createObjectStore('reviews', {
+                  keyPath: 'id'
+                });
+                reviewsStore.createIndex('restaurant', 'restaurant_id');
+               case 2:
+                  upgradeDb.createObjectStore('offlineReviews', { autoIncrement: true });
+            }
+            
           });
 
           dbPromise.then(function(db){
@@ -52,8 +63,8 @@ class DBHelper {
         }
       };
       xhr.send();
-  })
-}
+    })
+  }
   /**
   * Fetch a restaurant by its ID.
   */
@@ -188,33 +199,31 @@ class DBHelper {
       })
       marker.addTo(newMap);
     return marker;
-  } 
-  /* static mapMarkerForRestaurant(restaurant, map) {
-    const marker = new google.maps.Marker({
-      position: restaurant.latlng,
-      title: restaurant.name,
-      url: DBHelper.urlForRestaurant(restaurant),
-      map: map,
-      animation: google.maps.Animation.DROP}
-    );
-    return marker;
-  } */
+  }
+
+
+  static postReview(review){
+
+    fetch('http://localhost:1337/reviews/',
+    {
+      method: 'POST',
+      headers: {'Content-type': 'application.json; charset = utf-8'},
+      body: JSON.stringify(review)
+    })
+    .then(response => {return response.json()})
+    .then(review => console.log(`Post review successful, ${JSON.stringify(review)}`))
+    .catch(error => console.log(`Request failed, ${error}`));
+  }
+
+  static getReview(review){
+
+    fetch('http://localhost:1337/reviews/',
+    {
+      method: 'get',
+      headers: {'Content-type': 'application.json; charset = utf-8'}
+    })
+    .then(response => {return response.json()})
+    .then(review => console.log(`Get review successful, ${JSON.stringify(review)}`))
+    .catch(error => console.log(`Request failed, ${error}`));
+  }
 }
-
-
-// let dbPromise =  idb.open('restau-db', 1, function(upgradeDb){
-//     let store = upgradeDb.createObjectStore('restau-reviews', {
-//       keyPath: 'id'
-//     });
-//     store.createIndex('id', 'id');
-//   });
-
-// dbPromise.then(function(db){
-//   let restaurants = JSON.parse(data);
-//   console.log(restaurants);
-//   let tx = db.transaction('restau-reviews', 'readwrite');
-//   let store = tx.objectStore('restau-reviews');
-//   restaurants.forEach(function(restaurant){
-//     store.put(restau-reviews);
-//   })
-// })

@@ -182,7 +182,7 @@ fillBreadcrumb = (restaurant=self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
   li.innerHTML = restaurant.name;
-  breadcrumb.appendChild(li);
+  breadcrumb.appendChild(li);createReviewHTML
 }
 
 /**
@@ -200,3 +200,40 @@ getParameterByName = (name, url) => {
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+
+/**
+* Form
+*/
+
+
+
+validateForm = () => {
+  let id = self.restaurant.id;
+  let author = document.getElementById('userName').value;
+  let rating = document.querySelector('#rate option:checked').value;
+  let comment = document.getElementById('comment').value;
+  
+  console.log(id, author, rating, comment);
+
+  let formData = {
+      "restaurant_id": parseInt(id),
+      "name": author,
+      "rating": rating,
+      "comments": comment
+  }
+
+ console.log(formData);
+
+DBHelper.postReview(formData);
+//console.log(JSON.stringify(formData))
+}
+
+
+document.getElementById('review-form').addEventListener('submit', e =>
+{
+  e.preventDefault();
+  validateForm();
+  document.getElementById('review-form').reset();
+  const container = document.getElementById('reviews-container');
+})

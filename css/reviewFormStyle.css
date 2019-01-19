@@ -1,0 +1,192 @@
+.form-style-5{
+	max-width: 500px;
+	padding: 10px 20px;
+	background: #f4f7f8;
+	margin: 10px auto;
+	padding: 20px;
+	background: #f4f7f8;
+	border-radius: 8px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-style-5 fieldset{
+	border: none;
+	position: relative;
+  	left: -330px;
+}
+.form-style-5 legend {
+	font-size: 1.4em;
+	margin-bottom: 10px;
+}
+.form-style-5 label {
+	display: block;
+	margin-bottom: 8px;
+}
+.form-style-5 input[type="text"],
+.form-style-5 input[type="date"],
+.form-style-5 input[type="datetime"],
+.form-style-5 input[type="email"],
+.form-style-5 input[type="number"],
+.form-style-5 input[type="search"],
+.form-style-5 input[type="time"],
+.form-style-5 input[type="url"],
+.form-style-5 textarea,
+.form-style-5 select {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	background: rgba(255,255,255,.1);
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	background-color: #e8eeef;
+	color:#8a97a0;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	margin-bottom: 30px;
+}
+.form-style-5 input[type="text"]:focus,
+.form-style-5 input[type="date"]:focus,
+.form-style-5 input[type="datetime"]:focus,
+.form-style-5 input[type="email"]:focus,
+.form-style-5 input[type="number"]:focus,
+.form-style-5 input[type="search"]:focus,
+.form-style-5 input[type="time"]:focus,
+.form-style-5 input[type="url"]:focus,
+.form-style-5 textarea:focus,
+.form-style-5 select:focus{
+	background: #d2d9dd;
+}
+.form-style-5 select{
+	-webkit-appearance: menulist-button;
+	height:35px;
+}
+.form-style-5 .number {
+	background: orange;
+	color: #fff;
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+	font-size: 0.8em;
+	margin-right: 4px;
+	line-height: 30px;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+	border-radius: 15px 15px 15px 0px;
+}
+
+.form-style-5 button
+{
+	position: relative;
+  	left: -330px;
+	display: block;
+	padding: 19px 39px 18px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	background: orange;
+	font-size: 18px;
+	text-align: center;
+	font-style: normal;
+	width: 100%;
+	border: 1px;
+	border-width: 1px 1px 3px;
+	margin-bottom: 50px;
+}
+.form-style-5 button:hover
+{
+	background: black;
+}
+
+@media screen and (max-width: 600px){
+  .form-style-5 button[type="submit"],
+  .form-style-5 fieldset{
+  	width: calc(100% - 50px);
+  	left: -10px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 642px){
+  .form-style-5 fieldset{
+  	width: calc(25% + 150px);
+  	left: -50px;
+  }
+  .form-style-5 button[type="submit"]{
+  	width: calc(25% + 150px);
+  	left: -150px;
+  	margin-bottom: 70px;
+  }
+}
+
+@media screen and (min-width: 643px) and (max-width: 800px){
+  .form-style-5 fieldset{
+  	width: calc(25% + 150px);
+  	left: -70px;
+  }
+  .form-style-5 button[type="submit"]{
+  	width: calc(25% + 150px);
+  	left: -170px;
+  	margin-bottom: 70px;
+  }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1000px){
+  .form-style-5 fieldset{
+  	width: calc(40% + 150px);
+  	left: -159px;
+  }
+  .form-style-5 button[type="submit"]{
+  	width: calc(40% + 150px);
+  	left: -220px;
+  	margin-bottom: 70px;
+  }
+}
+
+
+
+@media screen and (min-width: 1001px){
+  .form-style-5 fieldset{
+  	width: calc(50% + 150px);
+  	left: -250px;
+  }
+  .form-style-5 button[type="submit"]{
+  	width: calc(50% + 150px);
+  	left: -290px;
+  	margin-bottom: 70px;
+  }
+}
+/*
+@media screen and (min-width: 645px) and (max-width: 799px){
+  #restaurants-list li{
+    width: calc(30% - 50px); 
+    margin: 5px 5px;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 644px){
+  #restaurants-list li{
+    width: calc(35% - 50px); 
+    margin: 25px 25px;
+  }
+}
+
+@media screen and (max-width: 500px){
+  #restaurants-list li{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:588px) and (min-width: 400px){
+  .filter-options {
+    max-width: 100%;
+    background-color: #3397DB;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+}*/
